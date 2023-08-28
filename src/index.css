@@ -1,0 +1,57 @@
+/* .header {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+  border: 1px solid black;
+}
+
+.nav-items > ul {
+  list-style-type: none;
+  display: flex;
+}
+
+.nav-items > ul > li {
+  padding: 10px;
+}
+
+.logo {
+  width: 100px;
+}
+
+.card {
+  width: 200px;
+  justify-items: auto;
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
+}
+
+.shimmer-card {
+  width: 200px;
+  height: 200px;
+  background: grey;
+  margin: 20px;
+}
+
+.card > img {
+  width: 200px;
+  justify-items: auto;
+}
+
+.restaurant-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.log-btn {
+  height: 50px;
+  width: 100px;
+} */
+
+/* @import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities"; */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
