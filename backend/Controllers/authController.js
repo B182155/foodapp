@@ -68,13 +68,3 @@ exports.login = async (req, res, next) => {
     next(error);
   }
 };
-
-// exports.profile = async (req, res, next) => {
-//   try {
-//     const { token } = req.cookies;
-//     const info = jwt.verify(token, process.env.JWT_SECRET, {});
-//     res.json(info);
-//   } catch (error) {
-//     next(error);
-//   }
-// };

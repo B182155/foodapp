@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { addItem, removeItem } from "../utils/cartSlice";
 import { useDispatch } from "react-redux";
+import { MENU_ITEM } from "../constants";
 
 export const MenuItem = ({ itemInfo }) => {
   const { name, description, price, imageId } = itemInfo;
@@ -37,11 +38,13 @@ export const MenuItem = ({ itemInfo }) => {
       <div className="mr-20 flex flex-col justify-center my-1">
         <img
           className="h-20 w-20 text-sm font-mono font-medium rounded-md mb-2"
-          alt={name + " image"}
           src={
-            "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_1024/" +
             imageId
+              ? MENU_ITEM + imageId
+              : `https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_1024/dlzurcsthx1y82cudnol`
           }
+          // src="../assets/img/food.jpg"
+          // alt={name + " image"}
         />
 
         {count === 0 ? (
