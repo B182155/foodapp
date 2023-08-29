@@ -28,6 +28,8 @@ exports.signup = async (req, res, next) => {
 
     const token = signToken(newUser._id);
 
+    res.cookie("token", token).json("ok");
+
     res.status(201).json({
       status: "success",
       token,
@@ -58,6 +60,7 @@ exports.login = async (req, res, next) => {
 
     res.status(201).json({
       status: "success",
+      data: user,
       token,
       message: "login successful",
     });
@@ -65,3 +68,13 @@ exports.login = async (req, res, next) => {
     next(error);
   }
 };
+
+// exports.profile = async (req, res, next) => {
+//   try {
+//     const { token } = req.cookies;
+//     const info = jwt.verify(token, process.env.JWT_SECRET, {});
+//     res.json(info);
+//   } catch (error) {
+//     next(error);
+//   }
+// };

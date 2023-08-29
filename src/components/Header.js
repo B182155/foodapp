@@ -10,20 +10,19 @@ import { LatLng } from "../utils/LatLng";
 
 import store from "../utils/store";
 import { useEffect } from "react";
+import LoggedInfo from "../utils/loggedinfo";
 
 const Title = () => {
   return <img className="h-24 rounded-lg" alt="logo" src={Logo} />;
 };
 
 const Header = () => {
-  const [isloggedin, setislogged] = useState(false);
+  // const [isloggedin, setislogged] = useState(false);
   const isOnline = useOnline();
-  const { user } = useContext(UserContext);
-  const { coords } = useContext(LatLng);
+  const { user, setUser } = useContext(UserContext);
+  const { isloggedin, setisloggedin } = useContext(LoggedInfo);
   const { searchedfor, setsearchedfor } = useContext(searchContext);
   const [val, setvalue] = useState("location");
-
-  // const [searchInput, setsearchInput] = useState("search location");
 
   const cartItems = useSelector((store) => store.cart.items);
 
@@ -78,40 +77,46 @@ const Header = () => {
             {/* <li className="p-3 font-bold  hover:bg-orange-400 rounded-md">
               <Link to="/instamart">Instamart</Link>
             </li> */}
-            <li className="p-3 font-bold  hover:bg-orange-400 rounded-md">
-              <div>
-                {isloggedin ? (
-                  <div>
-                    <Link to="/">
+            <div>
+              {isloggedin ? (
+                <div className="flex flex-wrap gap-1">
+                  <li className="p-3 font-bold  hover:bg-orange-400 rounded-md">
+                    <Link>
                       <button
                         className=""
                         onClick={() => {
-                          setislogged(false);
+                          setisloggedin(false);
+                          setUser({
+                            user: {
+                              name: "",
+                              email: "",
+                            },
+                          });
+                          setTimeout(() => {
+                            console.log(user);
+                          }, 1);
                         }}
                       >
                         Logout
                       </button>
                     </Link>
-                  </div>
-                ) : (
-                  <div>
-                    <Link to="/login">
-                      <button
-                        className=""
-                        onClick={() => {
-                          setislogged(true);
-                        }}
-                      >
-                        Login
-                      </button>
-                    </Link>
-                  </div>
-                )}
-              </div>
-            </li>
-            <li className="p-3 font-bold  hover:bg-orange-400 rounded-md">
-              <Link to="/register">Register</Link>
-            </li>
+                  </li>
+                  <li className="p-3 font-bold  hover:bg-orange-400 rounded-md">
+                    <h2>{`Hi! ${user.name}`}</h2>
+                    {/* <h2>{user.name}</h2> */}
+                  </li>
+                </div>
+              ) : (
+                <div className="flex flex-wrap gap-1">
+                  <li className="p-3 font-bold  hover:bg-orange-400 rounded-md">
+                    <Link to="/login">Login</Link>
+                  </li>
+                  <li className="p-3 font-bold  hover:bg-orange-400 rounded-md">
+                    <Link to="/register">Register</Link>
+                  </li>
+                </div>
+              )}
+            </div>
           </ul>
         </div>
       </div>

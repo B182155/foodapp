@@ -27,13 +27,18 @@ const Instamart = lazy(() => import("./components/Instamart"));
 import Contact from "./components/contactUs";
 import AboutUs from "./components/AboutUs";
 
+import LoggedInfo from "./utils/loggedinfo";
+
 const AppLayout = () => {
   const [user, setUser] = useState({
-    name: "dummy",
-    email: "girigelashiva12@gmail.com",
+    name: "",
+    email: "",
   });
 
+  const [islogged, setislogged] = useState(false);
+
   const [searchedfor, setsearchedfor] = useState("current");
+
   const [coords, setcoords] = useState({
     lat: 0,
     lng: 0,
@@ -41,17 +46,24 @@ const AppLayout = () => {
 
   return (
     <Provider store={store}>
-      <UserContext.Provider value={{ user: user, setUser: setUser }}>
-        <LatLng.Provider value={{ coords: coords, setcoords: setcoords }}>
-          <searchContext.Provider
-            value={{ searchedfor: searchedfor, setsearchedfor: setsearchedfor }}
-          >
-            <Header />
-            <Outlet />
-            <Footer />
-          </searchContext.Provider>
-        </LatLng.Provider>
-      </UserContext.Provider>
+      <LoggedInfo.Provider
+        value={{ isloggedin: islogged, setisloggedin: setislogged }}
+      >
+        <UserContext.Provider value={{ user: user, setUser: setUser }}>
+          <LatLng.Provider value={{ coords: coords, setcoords: setcoords }}>
+            <searchContext.Provider
+              value={{
+                searchedfor: searchedfor,
+                setsearchedfor: setsearchedfor,
+              }}
+            >
+              <Header />
+              <Outlet />
+              <Footer />
+            </searchContext.Provider>
+          </LatLng.Provider>
+        </UserContext.Provider>
+      </LoggedInfo.Provider>
     </Provider>
   );
 };

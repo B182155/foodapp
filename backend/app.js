@@ -3,6 +3,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const app = express();
 const createError = require("http-errors");
+const cookieParser = require("cookie-parser");
 
 const AppError = require("./helpers/AppError");
 
@@ -12,6 +13,7 @@ require("dotenv").config({ path: "./config.env" });
 
 //middle wares
 
+app.use(cookieParser());
 app.use(express.json());
 app.use(
   express.urlencoded({

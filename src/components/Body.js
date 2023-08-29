@@ -11,7 +11,6 @@ import { LatLng } from "../utils/LatLng";
 
 const Body = () => {
   const [searchInput, setsearchInput] = useState("search");
-  //   const [searchclicked, setsearchclicked] = useState("false");
   const [filteredrestaurants, setfilteredrestaurants] = useState([]);
   const [allrestaurants, setallrestaurants] = useState([]);
 
@@ -20,16 +19,6 @@ const Body = () => {
   const { user, setUser } = useContext(UserContext);
   const { searchedfor } = useContext(searchContext);
   const { coords, setcoords } = useContext(LatLng);
-
-  // useEffect(() => {
-  // navigator.geolocation.getCurrentPosition((pos) => {
-  //   const { latitude } = pos.coords;
-  //   const { longitude } = pos.coords;
-  //   console.log(latitude, longitude);
-  //   // getrestaurants(26.8467, 80.9462);
-  //   getrestaurants(latitude, longitude);
-  // });
-  // }, []);
 
   useEffect(() => {
     searcFunction();

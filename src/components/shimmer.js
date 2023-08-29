@@ -9,21 +9,6 @@ const Shimmer = () => {
           ></div>
         );
       })}
-      {/* {}
-      {<div className="h-52 w-52 m-2 bg-gray-400"></div>}
-      {<div className="h-52 w-52 m-2 bg-gray-400"></div>}
-      {<div className="h-52 w-52 m-2 bg-gray-400"></div>}
-      {<div className="h-52 w-52 m-2 bg-gray-400"></div>}
-      {<div className="h-52 w-52 m-2 bg-gray-400"></div>}
-      {<div className="h-52 w-52 m-2 bg-gray-400"></div>}
-      {<div className="h-52 w-52 m-2 bg-gray-400"></div>}
-      {<div className="h-52 w-52 m-2 bg-gray-400"></div>}
-      {<div className="h-52 w-52 m-2 bg-gray-400"></div>}
-      {<div className="h-52 w-52 m-2 bg-gray-400"></div>}
-      {<div className="h-52 w-52 m-2 bg-gray-400"></div>}
-      {<div className="h-52 w-52 m-2 bg-gray-400"></div>}
-      {<div className="h-52 w-52 m-2 bg-gray-400"></div>}
-      {<div className="h-52 w-52 m-2 bg-gray-400"></div>} */}
     </div>
   );
 };

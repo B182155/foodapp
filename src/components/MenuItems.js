@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 
 import { MenuItem } from "./MenuItem";
+import MenuShimmer from "./MenuShimmer";
 import ArrowCircleDownTwoToneIcon from "@mui/icons-material/ArrowCircleDownTwoTone";
 import ArrowCircleUpTwoToneIcon from "@mui/icons-material/ArrowCircleUpTwoTone";
 
 export default MenuItems = ({ card }) => {
   const [btn, setBtn] = useState(false);
 
-  return (
+  return card?.itemCards?.length === 0 ? (
+    <MenuShimmer />
+  ) : (
     <>
       {card?.itemCards?.length ? (
         <div className="flex justify-between border-b-2 border-solid border-b-slate-500  bg-blue-50 shadow-md rounded-md ">

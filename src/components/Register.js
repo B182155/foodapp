@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 // import axios from "../../node_modules/axios/dist";
 
 // export default function Register() {
@@ -123,6 +123,7 @@ export const RegistrationForm1 = () => {
   const [isSubmitting, setSubmitting] = useState(false);
   const [isError, setIsError] = useState(false);
   const [showError, setshowError] = useState("");
+  const [redirect, setredirect] = useState(false);
 
   const initialValues = {
     name: "",
@@ -155,6 +156,7 @@ export const RegistrationForm1 = () => {
       console.log(res.data);
       console.log("Form data submitted:", values);
       setIsError(false);
+      setredirect(true);
     } catch (error) {
       const message = error.response.data.message;
       setIsError(true);
@@ -164,6 +166,9 @@ export const RegistrationForm1 = () => {
 
     setSubmitting(false);
   };
+  if (redirect) {
+    return <Navigate to="/login" />;
+  }
 
   return (
     <div className="grid grid-cols-1  h-screen w-full">

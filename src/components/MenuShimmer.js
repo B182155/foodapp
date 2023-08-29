@@ -11,21 +11,6 @@ export const MenuShimmer = () => {
           ></div>
         );
       })}
-
-      {/* <div className="relative h-32 w-68 shadow-md m-1 p-1 bg-gray-250"></div>
-      <div className="relative h-32 w-68 shadow-md m-1 p-1 bg-gray-250"></div>
-      <div className="relative h-32 w-68 shadow-md m-1 p-1 bg-gray-250"></div>
-      <div className="relative h-32 w-68 shadow-md m-1 p-1 bg-gray-250"></div>
-      <div className="relative h-32 w-68 shadow-md m-1 p-1 bg-gray-250"></div>
-      <div className="relative h-32 w-68 shadow-md m-1 p-1 bg-gray-250"></div>
-      <div className="relative h-32 w-68 shadow-md m-1 p-1 bg-gray-250"></div>
-      <div className="relative h-32 w-68 shadow-md m-1 p-1 bg-gray-250"></div>
-      <div className="relative h-32 w-68 shadow-md m-1 p-1 bg-gray-250"></div>
-      <div className="relative h-32 w-68 shadow-md m-1 p-1 bg-gray-250"></div>
-      <div className="relative h-32 w-68 shadow-md m-1 p-1 bg-gray-250"></div>
-      <div className="relative h-32 w-68 shadow-md m-1 p-1 bg-gray-250"></div>
-      <div className="relative h-32 w-68 shadow-md m-1 p-1 bg-gray-250"></div>
-      <div className="relative h-32 w-68 shadow-md m-1 p-1 bg-gray-250"></div> */}
     </div>
   );
 };

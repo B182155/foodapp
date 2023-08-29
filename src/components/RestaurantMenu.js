@@ -30,7 +30,7 @@ export const RestaurantMenu = () => {
           <h3 className="mb-2 text-md font-mono font-semibold text-white">
             {restaurantinfo?.cuisines.join(",")}
           </h3>
-          <div className="flex justify-between">
+          <div className="flex gap-6">
             <button className="mb-1 text-md font-mono font-semibold text-white">
               {"⭐" + restaurantinfo?.avgRating}
             </button>
