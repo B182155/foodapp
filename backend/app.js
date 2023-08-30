@@ -36,8 +36,10 @@ app.use(cors(corsOptions));
 
 //routes
 const userRouter = require("./routes/userRoute");
+const transactionRouter = require("./routes/transactionRoute");
 
 app.use("/api/v1/", userRouter);
+app.use("/api/v1/", transactionRouter);
 
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));

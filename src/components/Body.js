@@ -121,7 +121,7 @@ const Body = () => {
           }}
         />
         <button
-          className="search-btn bg-blue-200 rounded-md p-1"
+          className="search-btn bg-blue-200 rounded-md p-1 hover:border-teal-800 border-solid"
           onClick={() => {
             const fdata = filterData(searchInput, allrestaurants);
             setfilteredrestaurants(fdata);

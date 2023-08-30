@@ -12,6 +12,8 @@ import store from "../utils/store";
 import { useEffect } from "react";
 import LoggedInfo from "../utils/loggedinfo";
 
+import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
+
 const Title = () => {
   return <img className="h-24 rounded-lg" alt="logo" src={Logo} />;
 };
@@ -38,7 +40,7 @@ const Header = () => {
           onChange={(e) => setvalue(e.target.value)}
         />
         <button
-          className="search-btn bg-blue-200 p-1 pl-2 rounded-md"
+          className="search-btn bg-blue-200 p-1 pl-2 rounded-md hover:border-teal-800 border-solid"
           onClick={() => {
             if (val === "") {
               setvalue(searchedfor);
@@ -65,14 +67,15 @@ const Header = () => {
             <li className="p-3 font-bold  hover:bg-orange-400 rounded-md">
               <Link to="/aboutus">About Us</Link>
             </li>
-            {/* <li className="p-3 font-bold  hover:bg-orange-400 rounded-md">
-              <Link to="/about">About</Link>
-            </li> */}
+
             <li className="p-3 font-bold  hover:bg-orange-400 rounded-md">
               <Link to="/contact">Contact</Link>
             </li>
             <li className="p-3 font-bold  hover:bg-orange-400 rounded-md">
-              <Link to="/cart">Cart-{cartItems.length}</Link>
+              <Link to="/cart">
+                <ShoppingCartCheckoutIcon />
+                -[{cartItems.length}]
+              </Link>
             </li>
             {/* <li className="p-3 font-bold  hover:bg-orange-400 rounded-md">
               <Link to="/instamart">Instamart</Link>

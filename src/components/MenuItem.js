@@ -4,8 +4,12 @@ import { useDispatch } from "react-redux";
 import { MENU_ITEM } from "../constants";
 
 export const MenuItem = ({ itemInfo }) => {
-  const { name, description, price, imageId } = itemInfo;
+  const { name, description, price, imageId, defaultPrice } = itemInfo;
+
+  const actual_price = price || defaultPrice;
   // console.log(itemInfo);
+
+  //Adding count variable to itemInfo
   const ct = itemInfo.count ?? 0;
   const [count, setCount] = useState(ct);
 
@@ -31,7 +35,7 @@ export const MenuItem = ({ itemInfo }) => {
       <div className="ml-28 flex flex-col justify-center w-8/12 p-3">
         <h1 className="text-xl font-mono font-bold ">{name}</h1>
         <h2 className="text-sm font-mono font-bold mb-2">
-          {price ? "Rs-" + price / 100 + "/-" : ""}
+          {actual_price ? "Rs-" + actual_price / 100 + "/-" : ""}
         </h2>
         <h4 className="text-sm font-mono font-extralight">{description}</h4>
       </div>
