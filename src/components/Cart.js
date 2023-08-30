@@ -11,13 +11,15 @@ import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 // import { transaction } from "../../backend/Controllers/transactionController";
 
 import LoggedInfo from "../utils/loggedinfo";
+import UserContext from "../utils/userContext";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((store) => store.cart.items);
+  const { user } = useContext(UserContext);
 
-  const dynamicClass = cartItems.length == 0 ? "block" : "flex gap-10";
-  const width = cartItems.length == 0 ? "w-[70%]" : "w-[85%]";
+  const dynamicClass = cartItems.length == 0 ? "" : "flex gap-10";
+  // const width = cartItems.length == 0 ? "" : "w-[85%]";
 
   const { isloggedin } = useContext(LoggedInfo);
 
@@ -41,6 +43,7 @@ const Cart = () => {
     const transaction = {
       cartitems: cartItems,
       totalAmount: topay,
+      userId: user.id,
     };
 
     if (isloggedin) {
@@ -67,9 +70,9 @@ const Cart = () => {
   };
 
   return (
-    <div className={`w-[95%]  mx-auto my-0 ${dynamicClass}`}>
+    <div className={`w-[80%] h-[82vh] mx-auto my-0 ${dynamicClass}`}>
       <div
-        className={`flex flex-col p-2 ${width} h-[80vh] overflow-y-auto overflow-x-hidden gap-7`}
+        className={`flex flex-col p-2 w-[85%] h-[80vh] overflow-y-auto overflow-x-hidden gap-7`}
       >
         <div className="flex justify-center gap-56 mt-2">
           <h1 className="text-4xl font-mono font-extrabold ">
@@ -86,9 +89,6 @@ const Cart = () => {
         {cartItems.length === 0 ? (
           <div className="text-center flex flex-col items-center">
             <img src={cartEmpty} className="w-52 h-52 mb-1 p-2" />
-            {/* <div className="items-center">
-            
-          </div> */}
             <h1 className="text-4xl font-bold font-mono mb-1 p-2">
               Your Cart is Empty
             </h1>
@@ -111,7 +111,7 @@ const Cart = () => {
       {cartItems.length == 0 ? (
         <></>
       ) : (
-        <div className="flex flex-col w-[25%] mx-auto mt-[86] pt-14 p-5 gap-4 bg-pink-50 rounded-md">
+        <div className="flex flex-col w-[35%] mx-auto mt-[86] pt-14 p-5 gap-4 bg-pink-50 rounded-md">
           <h1 className="text-2xl font-sans font-bold mb-5">Bill Details</h1>
 
           <div className="flex justify-between text-slate-800">

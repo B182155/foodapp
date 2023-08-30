@@ -93,7 +93,7 @@ const Body = () => {
     setfilteredrestaurants(restaurantsData);
     console.log(coords);
 
-    // console.log(allrestaurants)
+    console.log(allrestaurants);
   }
 
   const isOnline = useOnline();
@@ -109,26 +109,28 @@ const Body = () => {
   return allrestaurants.length == 0 ? (
     <Shimmer />
   ) : (
-    <>
-      <div className="search-container flex  bg-pink-50 my-3  justify-center gap-8 p-5">
-        <input
-          type="text"
-          className="search-input rounded-md p-1 pl-2"
-          placeholder="search"
-          value={searchInput}
-          onChange={(e) => {
-            setsearchInput(e.target.value);
-          }}
-        />
-        <button
-          className="search-btn bg-blue-200 rounded-md p-1 hover:border-teal-800 border-solid"
-          onClick={() => {
-            const fdata = filterData(searchInput, allrestaurants);
-            setfilteredrestaurants(fdata);
-          }}
-        >
-          search
-        </button>
+    <div className="w-[90%] overflow-x-auto overflow-y-hidden mx-auto my-0">
+      <div className="w-[30%] mx-auto my-3 p-4 rounded-md">
+        <div className="flex justify-between rounded-md  border-[3px] border-gray-300">
+          <input
+            type="text"
+            className="search-input  p-2 w-full rounded-s-md"
+            placeholder="search a restaurant you want..."
+            // value={searchInput}
+            onChange={(e) => {
+              setsearchInput(e.target.value);
+            }}
+          />
+          <button
+            className="search-btn bg-blue-200  p-1 border-solid rounded-e-md hover:bg-teal-600"
+            onClick={() => {
+              const fdata = filterData(searchInput, allrestaurants);
+              setfilteredrestaurants(fdata);
+            }}
+          >
+            search
+          </button>
+        </div>
       </div>
       <div className="restaurant-list grid grid-cols-4 gap-8 justify-between ">
         {filteredrestaurants.length == 0 ? (
@@ -150,7 +152,7 @@ const Body = () => {
           })
         )}
       </div>
-    </>
+    </div>
   );
 };
 

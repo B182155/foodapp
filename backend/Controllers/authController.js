@@ -28,7 +28,7 @@ exports.signup = async (req, res, next) => {
 
     const token = signToken(newUser._id);
 
-    res.cookie("token", token).json("ok");
+    // res.cookie("token", token).json("ok");
 
     res.status(201).json({
       status: "success",

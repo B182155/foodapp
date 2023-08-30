@@ -15,7 +15,7 @@ import LoggedInfo from "../utils/loggedinfo";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 
 const Title = () => {
-  return <img className="h-24 rounded-lg" alt="logo" src={Logo} />;
+  return <img className="h-20 rounded-lg" alt="logo" src={Logo} />;
 };
 
 const Header = () => {
@@ -29,38 +29,41 @@ const Header = () => {
   const cartItems = useSelector((store) => store.cart.items);
 
   return (
-    <div className="mb-2 flex justify-between items-center bg-pink-50  shadow-xl ">
+    <div className="flex justify-between items-center bg-pink-50  shadow-xl">
       <Title />
-      <div className="search-container bg-pink-50 align-middle ">
-        <input
-          type="text"
-          className="search-input rounded-md p-1 pl-2 mr-5"
-          placeholder={val}
-          // value={val}
-          onChange={(e) => setvalue(e.target.value)}
-        />
-        <button
-          className="search-btn bg-blue-200 p-1 pl-2 rounded-md hover:border-teal-800 border-solid"
-          onClick={() => {
-            if (val === "") {
-              setvalue(searchedfor);
-              setsearchedfor(searchedfor);
-            } else {
-              setsearchedfor(val);
-            }
+      <div className="search-container bg-pink-50 ">
+        <div className="w-full mx-auto p-2 rounded-md">
+          <div className="flex justify-between rounded-md border-[3px] border-gray-300">
+            <input
+              type="text"
+              className="search-input p-2 w-full rounded-s-md"
+              placeholder={val}
+              // value={val}
+              onChange={(e) => setvalue(e.target.value)}
+            />
+            <button
+              className="search-btn bg-blue-200  p-1 border-solid rounded-e-md hover:bg-teal-600"
+              onClick={() => {
+                if (val === "") {
+                  setvalue(searchedfor);
+                  setsearchedfor(searchedfor);
+                } else {
+                  setsearchedfor(val);
+                }
 
-            console.log(val);
-            // setvalue("hyderabad");
-          }}
-        >
-          search
-        </button>
+                console.log(val);
+                // setvalue("hyderabad");
+              }}
+            >
+              search
+            </button>
+          </div>
+        </div>
       </div>
-
-      <h1 className="py-10">{isOnline ? "🟢" : "🔴"}</h1>
+      <h1>{isOnline ? "🟢" : "🔴"}</h1>
       <div>
         <div className="nav-items">
-          <ul className="flex py-10">
+          <ul className="flex py-6">
             <li className="p-3 font-bold  hover:bg-orange-400 rounded-md">
               <Link to="/">Home</Link>
             </li>

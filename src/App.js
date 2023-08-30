@@ -33,6 +33,7 @@ const AppLayout = () => {
   const [user, setUser] = useState({
     name: "",
     email: "",
+    id: 1,
   });
 
   const [islogged, setislogged] = useState(false);

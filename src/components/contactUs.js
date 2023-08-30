@@ -4,7 +4,7 @@ import contactImg from "../assets/img/contact.jpg";
 
 export default function Contact() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full">
+    <div className="sm:grid-cols-2 grid grid-cols-1 place-items-center gap-10 w-[80%] h-[82vh] mx-auto my-0">
       <div className="hidden sm:block">
         <img
           className="w-full h-full object-scale-down"

@@ -4,6 +4,15 @@ const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
 
+// const transactionSchema = new mongoose.Schema({
+//   cartitems: {
+//     type: Array,
+//   },
+//   totalAmount: Number,
+// });
+
+// const transaction = mongoose.model("transaction", transactionSchema);
+
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -34,6 +43,7 @@ const userSchema = new mongoose.Schema({
       },
     },
   },
+  // transactions: [{ type: mongoose.Schema.Types.ObjectId, ref: "transaction" }],
 });
 
 userSchema.pre("save", async function (next) {
@@ -55,3 +65,4 @@ userSchema.methods.correctPassword = async function (
 const User = mongoose.model("user", userSchema);
 
 module.exports = User;
+// module.exports = transaction;

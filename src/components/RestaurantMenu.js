@@ -21,7 +21,7 @@ export const RestaurantMenu = () => {
           />
         </div>
         <div className="m-0">
-          <h1 className="text-3xl text-white  underline font-mono font-extrabold mb-5">
+          <h1 className="text-3xl text-white  font-mono font-bold mb-5">
             {restaurantinfo?.name}
           </h1>
           <h2 className="mb-2 text-lg font-mono font-semibold text-white ">

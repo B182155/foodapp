@@ -9,6 +9,8 @@ import * as Yup from "yup";
 import UserContext from "../utils/userContext";
 import LoggedInfo from "../utils/loggedinfo";
 
+import loginImg from "../assets/img/login.jpg";
+
 export const LoginForm = () => {
   const [isSubmitting, setSubmitting] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -45,12 +47,13 @@ export const LoginForm = () => {
 
       console.log(res.data);
 
-      const { name, email } = { ...res.data.data };
+      const { name, email, _id } = { ...res.data.data };
 
-      console.log(name, email);
+      console.log(name, email, _id);
       setUser({
         name: name,
         email: email,
+        id: _id,
       });
 
       setTimeout(() => {
@@ -79,15 +82,40 @@ export const LoginForm = () => {
   }
 
   return (
-    <div className="grid grid-cols-1  h-screen w-full">
-      <div className="bg-gray-500 flex flex-col justify-center">
+    <div className="sm:grid-cols-2 grid grid-cols-1 place-items-center w-[70%] h-[82vh] mx-auto my-0">
+      <div className="hidden sm:block w-full h-[70vh]">
+        <img
+          className="h-full object-left object-cover rounded-s-lg"
+          src={loginImg}
+          alt="contactImg"
+        />
+      </div>
+      <div className="h-[70vh] flex flex-col justify-center w-full rounded-e-lg bg-gray-900">
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={handleSubmit}
         >
           {({ isSubmitting }) => (
-            <Form className="max-w-[400px] w-full mx-auto rounded-lg bg-gray-900 p-8 px-8">
+            <Form className="max-w-[400px] w-full mx-auto  p-8 px-8">
+              <div className="flex justify-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-20 h-20 text-blue-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                  <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    stroke-width="2"
+                    d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+                  />
+                </svg>
+              </div>
               <h2 className="text-4xl text-white font-bold text-center">
                 LOG IN
               </h2>
@@ -127,9 +155,9 @@ export const LoginForm = () => {
                 {isSubmitting ? "Logging..." : "LOGIN"}
               </button>
               {isError ? (
-                <div className="flex flex-col text-gray-400 py-2">
+                <div className="flex flex-col text-red-400 py-2">
                   <input
-                    className="p-2 rounded-lg bg-gray-700 mt-2 focus:border-blue-500 focus:outline-none"
+                    className="p-2 rounded-lg bg-gray-700 mt-2  focus:outline-none"
                     type="error"
                     name="error"
                     value={showError}
