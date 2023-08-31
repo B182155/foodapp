@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 // import axios from "../../node_modules/axios/dist";
 
 export default function Login() {
@@ -92,13 +92,14 @@ export default function Login() {
   );
 }
 
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 export const LoginForm = () => {
   const [isSubmitting, setSubmitting] = useState(false);
   const [isError, setIsError] = useState(false);
   const [showError, setshowError] = useState("");
+  const [redirect, setRedirect] = useState(false);
 
   const initialValues = {
     email: "",
@@ -130,6 +131,10 @@ export const LoginForm = () => {
       console.log("Form data submitted:", values);
 
       setIsError(false);
+
+      if (res.ok) {
+        setRedirect(true);
+      }
     } catch (error) {
       const message = error.response.data.message;
       setIsError(true);
@@ -139,6 +144,10 @@ export const LoginForm = () => {
 
     setSubmitting(false);
   };
+
+  if (redirect) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <div className="grid grid-cols-1  h-screen w-full">
@@ -159,9 +168,11 @@ export const LoginForm = () => {
                 <Field
                   type="email"
                   name="email"
-                  // placeholder="email"
                   className="p-2 rounded-lg bg-gray-700 mt-2 focus:border-blue-500 focus:outline-none"
                   // onChange={setIsError(false)}
+                  // handleinputchange={() => {
+                  //   setIsError(true);
+                  // }}
                 />
                 <ErrorMessage name="email" component="div" className="error" />
               </div>

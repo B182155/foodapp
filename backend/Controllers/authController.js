@@ -55,6 +55,7 @@ exports.login = async (req, res, next) => {
     }
 
     const token = signToken(user._id);
+    res.cookie("token", token);
 
     res.status(201).json({
       status: "success",

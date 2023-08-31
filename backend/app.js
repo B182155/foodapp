@@ -1,7 +1,9 @@
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 const app = express();
+
 const createError = require("http-errors");
 
 const AppError = require("./helpers/AppError");
@@ -11,6 +13,8 @@ const globalErrorHandler = require("./Controllers/errorController");
 require("dotenv").config({ path: "./config.env" });
 
 //middle wares
+
+app.use(cookieParser());
 
 app.use(express.json());
 app.use(
