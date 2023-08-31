@@ -10,6 +10,10 @@ const transactionSchema = new mongoose.Schema({
   },
   totalAmount: Number,
   userId: mongoose.Schema.ObjectId,
+  date: {
+    type: Date,
+    default: Date.now(),
+  },
 });
 
 const transaction = mongoose.model("transaction", transactionSchema);

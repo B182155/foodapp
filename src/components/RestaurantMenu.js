@@ -9,6 +9,9 @@ export const RestaurantMenu = () => {
   const { id } = useParams();
   const [restaurantinfo, cards] = useRestaurant(id);
 
+  const rating =
+    restaurantinfo?.avgRating > 4 ? "bg-blue-300" : "bg-red-400 text-gray-50 ";
+
   return restaurantinfo === null ? (
     <MenuShimmer />
   ) : (
@@ -31,7 +34,7 @@ export const RestaurantMenu = () => {
             {restaurantinfo?.cuisines.join(",")}
           </h3>
           <div className="flex gap-6">
-            <button className="mb-1 text-md font-mono font-semibold text-white">
+            <button className={`${rating}  p-1 rounded-md`}>
               {"⭐" + restaurantinfo?.avgRating}
             </button>
             <h1 className="mb-1 text-md font-mono font-semibold text-white">

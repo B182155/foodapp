@@ -22,6 +22,8 @@ import Register, {
   RegistrationForm1,
 } from "./components/Register";
 
+import { MyAccount } from "./components/MyAccount";
+
 const Instamart = lazy(() => import("./components/Instamart"));
 // const heading = React.createElement("h1", { id: "title" }, "react");
 import Contact from "./components/contactUs";
@@ -100,6 +102,10 @@ const approuter = createBrowserRouter([
       {
         path: "/aboutus",
         element: <AboutUs />,
+      },
+      {
+        path: "/myaccount",
+        element: <MyAccount />,
       },
       {
         path: "/restaurant/:id",

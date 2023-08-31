@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 import { MenuItem } from "./MenuItem";
 import MenuShimmer from "./MenuShimmer";
-import ArrowCircleDownTwoToneIcon from "@mui/icons-material/ArrowCircleDownTwoTone";
-import ArrowCircleUpTwoToneIcon from "@mui/icons-material/ArrowCircleUpTwoTone";
+import KeyboardArrowDownTwoToneIcon from "@mui/icons-material/KeyboardArrowDownTwoTone";
+import KeyboardArrowUpTwoToneIcon from "@mui/icons-material/KeyboardArrowUpTwoTone";
 
 export default MenuItems = ({ card }) => {
   const [btn, setBtn] = useState(false);
@@ -14,12 +14,12 @@ export default MenuItems = ({ card }) => {
     <>
       {card?.itemCards?.length ? (
         <div className="flex justify-between border-b-2 border-solid border-b-slate-500  bg-blue-50 shadow-md rounded-md ">
-          <h1 className="ml-28 text-2xl font-extrabold font-mono p-3">
+          <h1 className="ml-28 text-2xl font-bold font-mono p-3">
             {card?.title}
-            {card?.itemCards?.length ? `(${card?.itemCards?.length})` : "shiva"}
+            {card?.itemCards?.length ? ` [${card?.itemCards?.length}]` : ""}
           </h1>
 
-          <div className="mr-28">
+          <div className="mr-28 my-auto mx-0">
             {btn ? (
               <button
                 className="rounded-md p-1"
@@ -27,7 +27,7 @@ export default MenuItems = ({ card }) => {
                   setBtn(false);
                 }}
               >
-                {<ArrowCircleDownTwoToneIcon />}
+                {<KeyboardArrowDownTwoToneIcon />}
               </button>
             ) : (
               <button
@@ -36,7 +36,7 @@ export default MenuItems = ({ card }) => {
                   setBtn(true);
                 }}
               >
-                {<ArrowCircleUpTwoToneIcon />}
+                {<KeyboardArrowUpTwoToneIcon />}
               </button>
             )}
           </div>

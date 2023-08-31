@@ -3,8 +3,9 @@ import { addItem, removeItem } from "../utils/cartSlice";
 import { useDispatch } from "react-redux";
 import { MENU_ITEM } from "../constants";
 
-export const MenuItem = ({ itemInfo }) => {
-  const { name, description, price, imageId, defaultPrice } = itemInfo;
+export const MenuItem = ({ itemInfo, AddItemPart = false }) => {
+  const { name, description, price, imageId, defaultPrice, category } =
+    itemInfo;
 
   const actual_price = price || defaultPrice;
   // console.log(itemInfo);
@@ -30,16 +31,15 @@ export const MenuItem = ({ itemInfo }) => {
   };
 
   return (
-    // <div className="relative h-32 w-68 shadow-md m-1 p-1 bg-pink-50">
     <div className="flex justify-between border-b-2 border-solid border-b-slate-500 bg-pink-50 shadow-md rounded-md ">
-      <div className="ml-28 flex flex-col justify-center w-8/12 p-3">
-        <h1 className="text-xl font-mono font-bold ">{name}</h1>
-        <h2 className="text-sm font-mono font-bold mb-2">
+      <div className="ml-24  w-8/12 p-3">
+        <h1 className="text-xl  font-bold ">{name}</h1>
+        <h2 className="text-sm  font-bold mb-2">
           {actual_price ? "Rs-" + actual_price / 100 + "/-" : ""}
         </h2>
-        <h4 className="text-sm font-mono font-extralight">{description}</h4>
+        <h4 className="text-sm  font-extralight">{description || category}</h4>
       </div>
-      <div className="mr-20 flex flex-col justify-center my-1">
+      <div className="mr-20 my-1">
         <img
           className="h-20 w-20 text-sm font-mono font-medium rounded-md mb-2"
           src={
@@ -51,37 +51,41 @@ export const MenuItem = ({ itemInfo }) => {
           // alt={name + " image"}
         />
 
-        {count === 0 ? (
-          <div className="flex">
-            <button
-              className="flex-grow bg-blue-100 rounded-md "
-              onClick={() => {
-                addFoodItem(itemInfo, count + 1);
-              }}
-            >
-              AddItem
-            </button>
-          </div>
+        {!AddItemPart ? (
+          count === 0 ? (
+            <div className="flex">
+              <button
+                className="flex-grow bg-blue-100 rounded-md "
+                onClick={() => {
+                  addFoodItem(itemInfo, count + 1);
+                }}
+              >
+                AddItem
+              </button>
+            </div>
+          ) : (
+            <div className="flex rounded-md bg-slate-50 text-green-800 shadow-md shadow-teal-400 border-green-500">
+              <button
+                className="flex-grow"
+                onClick={() => {
+                  removeFoodItem(itemInfo, count - 1);
+                }}
+              >
+                -
+              </button>
+              <span className="text-center flex-grow ">{count}</span>
+              <button
+                className="flex-grow"
+                onClick={() => {
+                  addFoodItem(itemInfo, count + 1);
+                }}
+              >
+                +
+              </button>
+            </div>
+          )
         ) : (
-          <div className="flex rounded-md bg-slate-50 text-green-800 shadow-md shadow-teal-400 border-green-500">
-            <button
-              className="flex-grow"
-              onClick={() => {
-                removeFoodItem(itemInfo, count - 1);
-              }}
-            >
-              -
-            </button>
-            <span className="text-center flex-grow ">{count}</span>
-            <button
-              className="flex-grow"
-              onClick={() => {
-                addFoodItem(itemInfo, count + 1);
-              }}
-            >
-              +
-            </button>
-          </div>
+          <></>
         )}
       </div>
     </div>

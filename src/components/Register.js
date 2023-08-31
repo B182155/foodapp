@@ -176,7 +176,7 @@ export const RegistrationForm1 = () => {
   }
 
   return (
-    <div className="sm:grid-cols-2 grid grid-cols-1 place-items-center w-[70%] h-[82vh] mx-auto my-0">
+    <div className="sm:grid-cols-2 grid grid-cols-1 place-items-center w-[70%] min-h-[82vh] mx-auto my-0">
       <div className="hidden sm:block w-full h-[75vh]">
         <img
           className="h-full object-left object-cover rounded-s-lg"
