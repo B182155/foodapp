@@ -7,7 +7,7 @@ const Footer = () => {
       <h3 className=" font-sans font-semibold">
         <span className="text-gray-700 ">Created By</span>
         {"🚀"}
-        <span className="text-blue-950 ml-1 text-xl ">SAS TEAM </span>
+        <span className="text-blue-950 ml-1 text-xl "></span>
         {" ©️ 2023 "}
         <span className="text-zinc-950 ml-1">FOOD</span>
         <span className="text-orange-800">VILLA</span>
